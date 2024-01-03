@@ -1,4 +1,14 @@
 
+def validation(valList):
+    for i in range(9):
+            for j in range(i+1 , 9):
+                if valList[i] == valList[j]:
+                    return False
+               
+    return True
+                
+                
+                
 ListPrincipale =[ 
         ["4","3","5","2","6","9","7","8","1"],
         ["6","8","2","5","7","1","4","9","3"],
@@ -11,6 +21,8 @@ ListPrincipale =[
         ["7","6","3","4","1","8","2","5","9"],
        ] 
        
+
+                       
 for i in range (9):
     for j in range(9):
         print(ListPrincipale[i][j] , end="   ")
@@ -18,15 +30,15 @@ for i in range (9):
 
 row = int(input("donnez num de row :"))
 col = int(input("donnez num de col :"))
-number = int(input("---> donnez un nombre (  555 --> sorte!!):"))
+number = int(input("---> donnez un nombre (  555 --> stop!!):"))
 
     
 while number != 555 :
-    ListPrincipale[row-1][col-1] = number
+    ListPrincipale[row-1][col-1] = str(number)
     
     row = int(input("donnez num de row :"))
     col = int(input("donnez num de col :"))
-    number = int(input("---> donnez un nombre (  555 --> sorte!!):"))   
+    number = int(input("---> donnez un nombre (  555 --> stop!!):"))   
     
               
     
@@ -38,44 +50,42 @@ for i in range (9):
     
     
 #validation :
+#validation de row
 rowList = []
 conteur1 = 0
 for i in range(9):
     rowList = ListPrincipale[i]
         
-    for j in range(9):
-        for k in range(j+1 , 9):
-            if rowList[k] == rowList[j]:
-                conteur1 += 1
+    if validation(rowList):
+        conteur1 += 1
+        
                 
                            
-if conteur1 != 0 :
+if conteur1 != 9 :
     print("invalide row !!") 
 else : 
     print("valider row ")                   
+                
 
+#validation de col 
 conteur2 = 0
-for j in range(9):
+for i in range(9):
     colList = []
-
-    for i in range(9):
+    for j in range (9):
         colList.append(ListPrincipale[i][j]) 
-
-    for y in range(9):
-        for x in range(y+1 , 9):
-            if colList[y] == colList[x]:
-                conteur2 += 1
+         
+    if validation(colList) :
+        conteur2 += 1
 
 
-if conteur2 != 0 :
+if conteur2 != 9 :
     print("invalide col !!")
 else :
     print("valider col ")  
     
-    
-    
+        
 #validation de bloc
-  
+ 
     
 conteur3 = 0
 for i in range(0,9,3):
@@ -86,17 +96,15 @@ for i in range(0,9,3):
             for y in range(j,j+3):
                 blocList.append(ListPrincipale[x][y])
                 
-        for k in range(9):
-            for s in range(k+1 , 9):
-                if blocList[k] == blocList[s]:
-                    conteur3 += 1           
+        if validation(blocList):
+            conteur3 += 1           
    
-if conteur3 != 0 :
+if conteur3 != 9 :
     print("invalide bloc !!")
 else :
     print("valider bloc ")
     
+    
 
            
                              
-    
