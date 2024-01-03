@@ -71,3 +71,32 @@ if conteur2 != 0 :
     print("invalide col !!")
 else :
     print("valider col ")  
+    
+    
+    
+#validation de bloc
+  
+    
+conteur3 = 0
+for i in range(0,9,3):
+    for j in range(0,9,3):
+        blocList = []
+        
+        for x in range(i,i+3):
+            for y in range(j,j+3):
+                blocList.append(ListPrincipale[x][y])
+                
+        for k in range(9):
+            for s in range(k+1 , 9):
+                if blocList[k] == blocList[s]:
+                    conteur3 += 1           
+   
+if conteur3 != 0 :
+    print("invalide bloc !!")
+else :
+    print("valider bloc ")
+    
+
+           
+                             
+    
